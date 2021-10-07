@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script src="https://cdn.bootcss.com/showdown/1.3.0/showdown.min.js"></script>
+    <style>
+ /*       .CodeMirror, .CodeMirror-scroll {
+            min-height: 800px;
+        }*/
+    </style>
+</head>
+<body>
+<textarea  id="MyId" ></textarea>
+<button type="button" id="btn1">显示内容</button>
+<button type="button" id="btn2">显示html</button>
+<button type="button" id="btn3">保存为md</button>
+<a href="">adsfadsfasd</a>
+<button type="button" id="btn4">保存为html</button>
+<script>
+    var simplemde = new SimpleMDE();
+    document.getElementById('btn1').addEventListener('click', function(){
+        alert(simplemde.value());
+    });
+    document.getElementById('btn2').addEventListener('click', function(){
+        var converter = new showdown.Converter();
+        //转换为HTML
+        var html = converter.makeHtml(simplemde.value());
+        alert(html)
+    });
+    document.getElementById('btn3').addEventListener('click', function(){
+        var xhr = new XMLHttpRequest();
+        xhr.open("post", "/save", true);
+        // 如果想要使用post提交数据,必须添加此行
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send("article_content"+ "=" + simplemde.value());
+        console.log("article_content"+ "=" + simplemde.value());
+
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                alert("发送成功");
+            }
+        };
+    });
+    document.getElementById('btn4').addEventListener('click', function(){
+
+    });
+</script>
+</body>
+</html>
