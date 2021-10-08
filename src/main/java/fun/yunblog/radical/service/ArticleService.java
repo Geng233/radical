@@ -16,7 +16,7 @@ public interface ArticleService {
 
     public List<Article> queryArticlesSimple(String userName, Long length);
 
-    public List<Article> queryArticleWithoutContent(String userName);
+    public List<Article> queryArticleWithoutContent(String userName, Long length);
 
     public List<Article> queryArticlesByUserId(Long userId);
 

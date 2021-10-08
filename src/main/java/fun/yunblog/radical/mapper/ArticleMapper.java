@@ -77,6 +77,20 @@ public interface ArticleMapper {
     })
     List<Article> selectArticleWithoutContent(Long userId);
 
+    @Select("select `articleId`, `articleTitle`, `articleType`, `articleCreateDate`, `articleUpdateDate`, `articleUrl`, `userId` from article where userId = #{userId} limit #{length}")
+    @Results(id = "articleTagMapWithoutContentLimitLength", value = {
+            @Result(id = true, column = "articleId", property = "articleId"),
+            @Result(column = "articleTitle", property = "articleTitle"),
+            @Result(column = "articleType", property = "articleType"),
+            @Result(column = "articleCreateDate", property = "articleCreateDate"),
+            @Result(column = "articleUrl", property = "articleUrl"),
+            @Result(column = "userId", property = "userId"),
+            @Result(column = "articleUpdateDate", property = "articleUpdateDate"),
+            @Result(column = "articleId", property = "tags",many = @Many(select = "fun.yunblog.radical.mapper.TagMapper.selectTagsByArticleId",fetchType = FetchType.LAZY)),
+            @Result(column = "articleId", property = "categories",many = @Many(select = "fun.yunblog.radical.mapper.CategoryMapper.selectCategoriesByArticleId",fetchType = FetchType.LAZY))
+    })
+    List<Article> selectArticleWithoutContentLimitLength(Long userId, Long length);
+
     @Select("select * from article where articleId = #{articleId}")
     Article selectArticlesByArticleId(Long articleId);
 

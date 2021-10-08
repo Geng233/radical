@@ -3,6 +3,7 @@ package fun.yunblog.radical;
 import fun.yunblog.radical.mapper.ArticleMapper;
 import fun.yunblog.radical.mapper.UserMapper;
 import fun.yunblog.radical.model.domain.Article;
+import fun.yunblog.radical.model.domain.Attachment;
 import fun.yunblog.radical.service.*;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -32,6 +33,8 @@ class RadicalApplicationTests {
     private TagService tagService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private AttachmentService attachmentService;
 
 
     @Test
@@ -143,4 +146,13 @@ class RadicalApplicationTests {
         System.out.println(categoryService.queryCategoryByCategoryName("categoryName1"));
     }
 
+    @Test
+    void testAttachmentService() {
+        Attachment attachment = new Attachment();
+        attachment.setAttachmentName("name1");
+        attachment.setAnnex("asdfasdf".getBytes());
+        attachment.setAnnexNarrow("adsf".getBytes());
+        attachment.setCreateData(new Date());
+        System.out.println(attachmentService.addAttachment(attachment));
+    }
 }

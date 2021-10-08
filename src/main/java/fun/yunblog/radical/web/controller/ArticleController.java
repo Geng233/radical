@@ -145,10 +145,10 @@ public class ArticleController {
         return JSON.toJSONStringWithDateFormat(new Result().setCode(200).setMessage("查询成功").setData(articles),"yyyy-MM-dd  HH:mm:ss");
     }
 
-    @ApiOperation("查看文章(没有页面内容)")
+    @ApiOperation("查看文章(没有页面内容),可以设置数目")
     @RequestMapping(value = "/getWithoutContent", method = RequestMethod.GET)
-    public String getAllArticleWithoutContent(String userName) {
-        List<Article> articles = articleService.queryArticleWithoutContent(userName);
+    public String getAllArticleWithoutContent(String userName, Long length) {
+        List<Article> articles = articleService.queryArticleWithoutContent(userName, length);
         if (articles == null) {
             return JSON.toJSONString(new Result().setCode(400).setMessage("查询失败"));
         } else {

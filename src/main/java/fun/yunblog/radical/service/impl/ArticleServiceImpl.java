@@ -49,9 +49,13 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> queryArticleWithoutContent(String userName) {
+    public List<Article> queryArticleWithoutContent(String userName, Long length) {
         Long userId = userMapper.selectUserIdByUserName(userName);
-        return articleMapper.selectArticleWithoutContent(userId);
+        if (length != null) {
+            return articleMapper.selectArticleWithoutContentLimitLength(userId, length);
+        } else {
+            return articleMapper.selectArticleWithoutContent(userId);
+        }
     }
 
     @Override
