@@ -13,4 +13,6 @@ public interface AttachmentService {
     public Attachment queryAttachment(Long attachmentId);
 
     public boolean addAttachment(Attachment attachment);
+
+    public byte[] queryAttachmentAnnexNarrow(String attachmentName);
 }

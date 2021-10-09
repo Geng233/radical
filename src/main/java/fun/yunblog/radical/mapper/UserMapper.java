@@ -34,4 +34,7 @@ public interface UserMapper {
             " `userAvatar` = #{userAvatar}, `userEmail` = #{userEmail}, `userDescription` = #{userDescription}," +
             " `userLoginLast` = #{userLoginLast} where userId = #{userId}")
     boolean updateUser(Long userId,String userName, String password, String salt, String userAvatar, String userEmail, String userDescription, Date userLoginLast);
+
+    @Update("update `user` set `userLoginLast` = #{userLoginLast}")
+    boolean updateUserLastLogin(String userName, Date userLoginLast);
 }

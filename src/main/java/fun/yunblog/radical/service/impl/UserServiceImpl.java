@@ -78,4 +78,10 @@ public class UserServiceImpl implements UserService {
         user.setUserLoginLast(userGet.getUserLoginLast());
         return userMapper.updateUser(user.getUserId(),user.getUserName(), user.getPassword(), user.getSalt(), user.getUserAvatar(), user.getUserEmail(), user.getUserDescription(), user.getUserLoginLast());
     }
+
+
+    @Override
+    public void alterUserLoginLast(String userName) {
+        userMapper.updateUserLastLogin(userName, new Date());
+    }
 }

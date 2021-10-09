@@ -148,11 +148,14 @@ class RadicalApplicationTests {
 
     @Test
     void testAttachmentService() {
-        Attachment attachment = new Attachment();
-        attachment.setAttachmentName("name1");
-        attachment.setAnnex("asdfasdf".getBytes());
-        attachment.setAnnexNarrow("adsf".getBytes());
-        attachment.setCreateData(new Date());
-        System.out.println(attachmentService.addAttachment(attachment));
+//        Attachment attachment = new Attachment();
+//        attachment.setAttachmentName("name1");
+//        attachment.setAnnex("asdfasdf".getBytes());
+//        attachment.setAnnexNarrow("adsf".getBytes());
+//        attachment.setCreateData(new Date());
+//        System.out.println(attachmentService.addAttachment(attachment));
+
+//        System.out.println(attachmentService.queryAttachmentAnnexNarrow("sky.jpg").length);
+        System.out.println(attachmentService.queryAttachment("sky.jpg").getAnnexNarrow().length);
     }
 }

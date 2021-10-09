@@ -18,13 +18,20 @@ public class AttachmentServiceImpl implements AttachmentService {
 
     @Override
     public Attachment queryAttachment(String attachmentName) {
-        return null;
+        return attachmentMapper.selectAttachmentByName(attachmentName);
+    }
+
+    @Override
+    public byte[] queryAttachmentAnnexNarrow(String attachmentName) {
+        return attachmentMapper.selectAttachmentAnnexNarrowByName(attachmentName);
     }
 
     @Override
     public Attachment queryAttachment(Long attachmentId) {
-        return null;
+        return attachmentMapper.selectAttachmentById(attachmentId);
     }
+
+
 
     @Override
     public boolean addAttachment(Attachment attachment) {

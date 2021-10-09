@@ -2,6 +2,7 @@ package fun.yunblog.radical.service;
 
 import fun.yunblog.radical.model.domain.User;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -22,4 +23,6 @@ public interface UserService {
     boolean alterPassWordByUserName(String oldPassword, String newPassword, String userName);
 
     boolean alterUserInfo(User user);
+
+    void alterUserLoginLast(String userName);
 }

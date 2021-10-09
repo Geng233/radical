@@ -51,6 +51,7 @@ public class UserController {
         } catch (Exception e) {
             return JSON.toJSONString(new Result().setCode(500).setMessage("未知错误"));
         }
+        userService.alterUserLoginLast(user.getUserName());
         User backUser = userService.queryUserByUserName(user.getUserName());
         backUser.setPassword("");
         backUser.setSalt("");
